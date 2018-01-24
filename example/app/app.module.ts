@@ -9,8 +9,9 @@ import { Query } from "../../src/objects/query";
     bootstrap: [AppComponent]
 })
 export class AppModule {
-    constructor(){
+    constructor() {
         let query = new Query();
+        query.skip(1).expand('Request', a => a.select("abcd","vcd")).compile();
         let result = query.expand("abcd").compile();
     }
 }

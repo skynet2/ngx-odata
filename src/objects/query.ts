@@ -13,7 +13,7 @@ export interface IBaseQueryActions {
 
     count(count: boolean): Query;
 
-    expand(propertyName: string): ExpandQuery;
+    expand(propertyName: string): Query;
 
     compile(): string;
 }
@@ -31,12 +31,16 @@ export class Query implements IBaseQueryActions {
         throw new Error("Not implemented");
     }
 
-    public expand(propertyName: string): ExpandQuery {
+    public expand(propertyName: string, func?: (query: ExpandQuery) => Query): Query {
         let exQuery = new ExpandQuery(propertyName, this);
+
+        if (func != null) {
+            func(exQuery);
+        }
 
         this._expand.push(exQuery);
 
-        return exQuery;
+        return this;
     }
 
     public filter(e: any): Query {
@@ -63,9 +67,66 @@ export class Query implements IBaseQueryActions {
         return this;
     }
 
+    private checkAndAppend(result: string, prefix: string, delimiter: string, variable: any): void {
+
+        if (variable instanceof Number) {
+            if (variable == 0)
+                return;
+            else {
+                Query.append(result, prefix, delimiter, variable);
+            }
+        }
+
+        if (variable instanceof Boolean) {
+            if (variable == false)
+                return;
+            else {
+                Query.append(result, prefix, delimiter, variable);
+            }
+        }
+    }
+
+    private static append(result: string, prefix: string, delimiter: string, variable: any) {
+        let length = result.length;
+
+        if (length > 0)
+            result = `${result}${delimiter}${prefix}=${variable}`;
+    }
+
     public compile(): string {
         let isExpand = this instanceof ExpandQuery;
 
-        return "";
+        let resultStr = "";
+        let delimiter = isExpand ? ';' : '&';
+
+        if (this._top != 0) {
+            this.checkAndAppend(resultStr, '$top', delimiter, this._top);
+        }
+
+        if (this._skip != 0) {
+            this.checkAndAppend(resultStr, '$skip', delimiter, this._skip);
+        }
+
+        this.checkAndAppend(resultStr, '$count', delimiter, this._count);
+
+        if (this._filter.length > 0) {
+            // TODO
+        }
+
+        if (this._expand.length > 0) {
+            // TODO
+        }
+
+        if (this._orderBy.length > 0) {
+            // TODO
+        }
+
+        if (resultStr.length > 0 && isExpand)
+            resultStr = `(${resultStr})`;
+
+        if (resultStr.length > 0)
+            resultStr = `?${resultStr}`;
+
+        return resultStr;
     }
 }
