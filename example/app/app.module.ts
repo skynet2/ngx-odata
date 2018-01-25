@@ -10,8 +10,6 @@ import { Query } from "../../src/objects/query";
 })
 export class AppModule {
     constructor() {
-        let query = new Query();
-        query.skip(1).expand('Request', a => a.select("abcd","vcd")).compile();
-        let result = query.expand("abcd").compile();
+    //    let result = query.expand("abcd").compile();
     }
 }
