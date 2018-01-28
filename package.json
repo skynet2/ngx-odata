@@ -4,7 +4,7 @@
   "scripts": {
     "start": "tsc -p example && tsc -p src && concurrently \"tsc -p example -w\" \"tsc -p src -w\" \"lite-server --config sync-bs-config.json\" ",
     "yarn": "yarn",
-    "build": "yarn run clean && ngc -p src/tsconfig.webpack.json && rollup -c rollup.config.js",
+    "build": "ng-packagr -p ng-package.json",
     "clean": "yarn run rimraf -- compiled && yarn run rimraf -- dist"
   },
   "license": "MIT",
@@ -13,11 +13,10 @@
     "url": "git+https://github.com/skynet2/ngx-odata"
   },
   "peerDependencies": {
-    "@angular/core": ">= 2.0.0"
   },
   "devDependencies": {
     "@angular/common": "^5.2.1",
-    "@angular/core" : "^5.2.1",
+    "@angular/core": "^5.2.1",
     "@angular/compiler": "^5.2.1",
     "@angular/compiler-cli": "^5.2.1",
     "@angular/platform-browser": "^5.2.1",
@@ -31,11 +30,9 @@
     "concurrently": "^3.5.1",
     "lite-server": "^2.3.0",
     "element-closest": "^2.0.2",
-    "webpack": "^3.10.0",
     "rimraf": "^2.6.2",
-    "@ngtools/webpack": "^1.9.5",
     "rollup": "^0.55.0",
-    "rollup-plugin-copy" : "^0.2.3",
-    "ng-packagr" : "^1.6.0"
+    "rollup-plugin-copy": "^0.2.3",
+    "ng-packagr": "^1.6.0"
   }
 }
