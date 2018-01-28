@@ -4,8 +4,9 @@
   "scripts": {
     "start": "tsc -p example && tsc -p src && concurrently \"tsc -p example -w\" \"tsc -p src -w\" \"lite-server --config sync-bs-config.json\" ",
     "yarn": "yarn",
-    "build": "ng-packagr -p ng-package.json",
-    "clean": "yarn run rimraf -- compiled && yarn run rimraf -- dist"
+    "build": "yarn run rimraf dist && yarn run rimraf doc && yarn run build-lib && yarn run build-doc",
+    "build-lib": "ng-packagr -p ng-package.json",
+    "build-doc": "typedoc --module system --out ./docs ./src/objects"
   },
   "license": "MIT",
   "repository": {
@@ -33,6 +34,7 @@
     "rimraf": "^2.6.2",
     "rollup": "^0.55.0",
     "rollup-plugin-copy": "^0.2.3",
-    "ng-packagr": "^1.6.0"
+    "ng-packagr": "^1.6.0",
+    "typedoc": "^0.9.0"
   }
 }
