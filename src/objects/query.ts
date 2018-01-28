@@ -3,7 +3,9 @@ export interface IBaseQueryActions {
 
     orderBy(field: string, order: string): Query; // TOOD + Enum
 
-    filter(e: any): Query;
+    filter(field: string, operator: OperatorType, val2: any): Query;
+
+    filterComplex(filter: string): Query;
 
     skip(skip: number): Query;
 
@@ -16,9 +18,18 @@ export interface IBaseQueryActions {
     compile(): string;
 }
 
+export enum OperatorType {
+    Eq = "eq",
+    Less = "lt",
+    Greater = "gt",
+    GreaterOrEqual = "ge",
+    LessOrEqual = "le",
+    NotEqual = "ne"
+}
+
 export class Query implements IBaseQueryActions {
     private _select: Array<string> = [];
-    private _filter: Array<any> = [];
+    private _filter: Array<string> = [];
     private _orderBy: Array<any> = [];
     private _expand: Array<Query> = [];
     private _skip: number;
@@ -28,6 +39,15 @@ export class Query implements IBaseQueryActions {
 
     public static create(): Query {
         return new Query();
+    }
+
+    private static isGuid(value: string): boolean {
+        value = value.toLowerCase();
+
+        const regex = /[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}/i;
+        let match = regex.exec(value);
+
+        return match != null;
     }
 
     private constructor(extendedPropName?: string) {
@@ -50,8 +70,23 @@ export class Query implements IBaseQueryActions {
         return this;
     }
 
-    public filter(e: any): Query {
-        throw new Error("Not implemented");
+    public filter(field: string, operator: OperatorType, val2: any): Query {
+
+        if ((!field || field.length == 0) || (!val2 || val2.length == 0))
+            return this;
+
+        if (typeof val2 == "string" && !Query.isGuid(val2) && val2.indexOf("'") === -1) {
+            val2 = `'${val2}'`;
+        }
+
+        this._filter.push(`${field} ${operator.toString()} ${val2}`);
+
+        return this;
+    }
+
+    public filterComplex(filter: string): Query {
+        this._filter.push(filter);
+        return this;
     }
 
     public skip(skip: number): Query {
@@ -120,6 +155,7 @@ export class Query implements IBaseQueryActions {
         resultStr = Query.checkAndAppend(resultStr, '$count', delimiter, this._count);
 
         if (this._filter.length > 0) {
+            resultStr = Query.checkAndAppend(resultStr, '$filter', delimiter, this._filter.join(' and '))
             // TODO
         }
 
