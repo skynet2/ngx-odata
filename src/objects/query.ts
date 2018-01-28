@@ -1,7 +1,9 @@
 export interface IBaseQueryActions {
     select(...fields: string[]): Query;
 
-    orderBy(field: string, order: string): Query; // TOOD + Enum
+    orderBy(field: string, order: OrderBy): Query;
+
+    orderByComplex(orderBy: string): Query;
 
     filter(field: string, operator: OperatorType, val2: any): Query;
 
@@ -27,10 +29,15 @@ export enum OperatorType {
     NotEqual = "ne"
 }
 
+export enum OrderBy {
+    Asc = "asc",
+    Desc = "desc"
+}
+
 export class Query implements IBaseQueryActions {
     private _select: Array<string> = [];
     private _filter: Array<string> = [];
-    private _orderBy: Array<any> = [];
+    private _orderBy: Array<string> = [];
     private _expand: Array<Query> = [];
     private _skip: number;
     private _top: number;
@@ -54,8 +61,17 @@ export class Query implements IBaseQueryActions {
         this._extendedPropName = extendedPropName;
     }
 
-    public orderBy(field: string, order: string): Query {
-        throw new Error("Not implemented");
+    public orderBy(field: string, order: OrderBy): Query {
+        if (!field || field.length == 0)
+            return this;
+
+        return this.orderByComplex(`${field} ${order}`)
+    }
+
+    public orderByComplex(orderBy: string): Query {
+        this._orderBy.push(orderBy);
+
+        return this;
     }
 
     public expand(propertyName: string, func?: (query: Query) => Query): Query {
@@ -79,9 +95,7 @@ export class Query implements IBaseQueryActions {
             val2 = `'${val2}'`;
         }
 
-        this._filter.push(`${field} ${operator.toString()} ${val2}`);
-
-        return this;
+        return this.filterComplex(`${field} ${operator.toString()} ${val2}`);
     }
 
     public filterComplex(filter: string): Query {
@@ -156,11 +170,10 @@ export class Query implements IBaseQueryActions {
 
         if (this._filter.length > 0) {
             resultStr = Query.checkAndAppend(resultStr, '$filter', delimiter, this._filter.join(' and '))
-            // TODO
         }
 
         if (this._orderBy.length > 0) {
-            // TODO
+            resultStr = Query.checkAndAppend(resultStr, '$orderby', delimiter, this._orderBy);
         }
 
         if (this._expand.length > 0) {
