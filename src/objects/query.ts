@@ -169,7 +169,7 @@ export class Query implements IBaseQueryActions {
         resultStr = Query.checkAndAppend(resultStr, '$count', delimiter, this._count);
 
         if (this._filter.length > 0) {
-            resultStr = Query.checkAndAppend(resultStr, '$filter', delimiter, this._filter.join(` ${OperatorType.Eq} `))
+            resultStr = Query.checkAndAppend(resultStr, '$filter', delimiter, this._filter.join(` and `))
         }
 
         if (this._orderBy.length > 0) {
