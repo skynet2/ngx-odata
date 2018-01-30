@@ -96,6 +96,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_query_.ibasequeryactions.html#filter" class="tsd-kind-icon">filter</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_query_.ibasequeryactions.html#filtercomplex" class="tsd-kind-icon">filter<wbr>Complex</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_query_.ibasequeryactions.html#orderby" class="tsd-kind-icon">order<wbr>By</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_query_.ibasequeryactions.html#orderbycomplex" class="tsd-kind-icon">order<wbr>ByComplex</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_query_.ibasequeryactions.html#select" class="tsd-kind-icon">select</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_query_.ibasequeryactions.html#skip" class="tsd-kind-icon">skip</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_query_.ibasequeryactions.html#top" class="tsd-kind-icon">top</a></li>
@@ -116,7 +117,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/skynet2/ngx-odata/blob/546cbc8/src/objects/query.ts#L18">query.ts:18</a></li>
+									<li>Defined in <a href="https://github.com/skynet2/ngx-odata/blob/a733db4/src/objects/query.ts#L20">query.ts:20</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
@@ -133,7 +134,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/skynet2/ngx-odata/blob/546cbc8/src/objects/query.ts#L14">query.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/skynet2/ngx-odata/blob/a733db4/src/objects/query.ts#L16">query.ts:16</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -156,7 +157,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/skynet2/ngx-odata/blob/546cbc8/src/objects/query.ts#L16">query.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/skynet2/ngx-odata/blob/a733db4/src/objects/query.ts#L18">query.ts:18</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -179,7 +180,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/skynet2/ngx-odata/blob/546cbc8/src/objects/query.ts#L6">query.ts:6</a></li>
+									<li>Defined in <a href="https://github.com/skynet2/ngx-odata/blob/a733db4/src/objects/query.ts#L8">query.ts:8</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -208,7 +209,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/skynet2/ngx-odata/blob/546cbc8/src/objects/query.ts#L8">query.ts:8</a></li>
+									<li>Defined in <a href="https://github.com/skynet2/ngx-odata/blob/a733db4/src/objects/query.ts#L10">query.ts:10</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -225,13 +226,13 @@
 					<a name="orderby" class="tsd-anchor"></a>
 					<h3>order<wbr>By</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">order<wbr>By<span class="tsd-signature-symbol">(</span>field<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, order<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../classes/_query_.query.html" class="tsd-signature-type">Query</a></li>
+						<li class="tsd-signature tsd-kind-icon">order<wbr>By<span class="tsd-signature-symbol">(</span>field<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, order<span class="tsd-signature-symbol">: </span><a href="../enums/_query_.orderby.html" class="tsd-signature-type">OrderBy</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../classes/_query_.query.html" class="tsd-signature-type">Query</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/skynet2/ngx-odata/blob/546cbc8/src/objects/query.ts#L4">query.ts:4</a></li>
+									<li>Defined in <a href="https://github.com/skynet2/ngx-odata/blob/a733db4/src/objects/query.ts#L4">query.ts:4</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -240,7 +241,30 @@
 									<h5>field: <span class="tsd-signature-type">string</span></h5>
 								</li>
 								<li>
-									<h5>order: <span class="tsd-signature-type">string</span></h5>
+									<h5>order: <a href="../enums/_query_.orderby.html" class="tsd-signature-type">OrderBy</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../classes/_query_.query.html" class="tsd-signature-type">Query</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="orderbycomplex" class="tsd-anchor"></a>
+					<h3>order<wbr>ByComplex</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">order<wbr>ByComplex<span class="tsd-signature-symbol">(</span>orderBy<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../classes/_query_.query.html" class="tsd-signature-type">Query</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/skynet2/ngx-odata/blob/a733db4/src/objects/query.ts#L6">query.ts:6</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>orderBy: <span class="tsd-signature-type">string</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="../classes/_query_.query.html" class="tsd-signature-type">Query</a></h4>
@@ -257,7 +281,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/skynet2/ngx-odata/blob/546cbc8/src/objects/query.ts#L2">query.ts:2</a></li>
+									<li>Defined in <a href="https://github.com/skynet2/ngx-odata/blob/a733db4/src/objects/query.ts#L2">query.ts:2</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -280,7 +304,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/skynet2/ngx-odata/blob/546cbc8/src/objects/query.ts#L10">query.ts:10</a></li>
+									<li>Defined in <a href="https://github.com/skynet2/ngx-odata/blob/a733db4/src/objects/query.ts#L12">query.ts:12</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -303,7 +327,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/skynet2/ngx-odata/blob/546cbc8/src/objects/query.ts#L12">query.ts:12</a></li>
+									<li>Defined in <a href="https://github.com/skynet2/ngx-odata/blob/a733db4/src/objects/query.ts#L14">query.ts:14</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -334,6 +358,9 @@
 					<li class=" tsd-kind-enum tsd-parent-kind-external-module">
 						<a href="../enums/_query_.operatortype.html" class="tsd-kind-icon">Operator<wbr>Type</a>
 					</li>
+					<li class=" tsd-kind-enum tsd-parent-kind-external-module">
+						<a href="../enums/_query_.orderby.html" class="tsd-kind-icon">Order<wbr>By</a>
+					</li>
 					<li class=" tsd-kind-class tsd-parent-kind-external-module">
 						<a href="../classes/_query_.query.html" class="tsd-kind-icon">Query</a>
 					</li>
@@ -359,6 +386,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
 								<a href="_query_.ibasequeryactions.html#orderby" class="tsd-kind-icon">order<wbr>By</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="_query_.ibasequeryactions.html#orderbycomplex" class="tsd-kind-icon">order<wbr>ByComplex</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
 								<a href="_query_.ibasequeryactions.html#select" class="tsd-kind-icon">select</a>
