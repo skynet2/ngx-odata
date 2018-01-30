@@ -74,7 +74,7 @@ export class Query implements IBaseQueryActions {
         return this;
     }
 
-    public expand(propertyName: string, func?: (query: Query) => Query): Query {
+    public expand(propertyName: string, func?: (query: Query) => void): Query {
         let exQuery = new Query(propertyName);
 
         if (func != null) {
@@ -176,6 +176,10 @@ export class Query implements IBaseQueryActions {
             resultStr = Query.checkAndAppend(resultStr, '$orderby', delimiter, this._orderBy.join(','));
         }
 
+        if (this._select.length > 0) {
+            resultStr = Query.checkAndAppend(resultStr, '$select', delimiter, this._select.join(','))
+        }
+
         if (this._expand.length > 0) {
             let result = [];
             for (let item of this._expand) {
@@ -194,10 +198,6 @@ export class Query implements IBaseQueryActions {
 
         if (isExpand)
             resultStr = `${this._extendedPropName}${resultStr}`;
-
-        if (resultStr.length > 0 && !isExpand)
-            resultStr = `?${resultStr}`;
-
 
         return resultStr;
     }
