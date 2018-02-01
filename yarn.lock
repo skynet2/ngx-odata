@@ -2832,7 +2832,7 @@ tsickle@^0.26.0:
     source-map "^0.5.6"
     source-map-support "^0.4.2"
 
-tslib@^1.7.1:
+tslib@^1.7.1, tslib@^1.9.0:
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.9.0.tgz#e37a86fda8cbbaf23a057f473c9f4dc64e5fc2e8"
 
