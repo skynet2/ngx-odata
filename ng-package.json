@@ -1,7 +1,6 @@
 {
   "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
-  "name": "ngx-odata",
-  "version": "0.0.1",
+  "name": "ngx-odata-v4",
   "lib": {
     "entryFile": "./src/angular.build.ts"
   }

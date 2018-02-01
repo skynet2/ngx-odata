@@ -21,17 +21,17 @@ export interface IBaseQueryActions {
 }
 
 export enum OperatorType {
-    Eq = "eq",
-    Less = "lt",
-    Greater = "gt",
-    GreaterOrEqual = "ge",
-    LessOrEqual = "le",
-    NotEqual = "ne"
+    Eq = <any>"eq",
+    Less = <any>"lt",
+    Greater = <any>"gt",
+    GreaterOrEqual = <any>"ge",
+    LessOrEqual = <any>"le",
+    NotEqual = <any>"ne"
 }
 
 export enum OrderBy {
-    Asc = "asc",
-    Desc = "desc"
+    Asc = <any>"asc",
+    Desc = <any>"desc"
 }
 
 export class Query implements IBaseQueryActions {

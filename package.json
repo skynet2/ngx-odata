@@ -1,6 +1,6 @@
 {
-  "name": "ngx-odata",
-  "version": "0.0.0",
+  "name": "ngx-odata-v4",
+  "version": "0.0.2",
   "scripts": {
     "start": "tsc -p example && tsc -p src && concurrently \"tsc -p example -w\" \"tsc -p src -w\" \"lite-server --config sync-bs-config.json\" ",
     "yarn": "yarn",
@@ -34,7 +34,7 @@
     "rimraf": "^2.6.2",
     "rollup": "^0.55.0",
     "rollup-plugin-copy": "^0.2.3",
-    "ng-packagr": "^2.0.0-rc.12",
+    "ng-packagr": "^1.6.0",
     "postcss-discard-comments" : "^2.0.4",
     "typedoc": "^0.9.0",
     "tslib": "^1.9.0"
