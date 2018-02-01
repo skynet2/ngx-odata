@@ -32,7 +32,7 @@ Query.create()
             .orderBy('Status', OrderBy.Desc);
 ```
 Complex query example
-```
+```ts
 Query.create()
             .filter('Id', OperatorType.Greater, 1)
             .filter('ReferenceId', OperatorType.Eq, 'c8027a81-5f7a-4a24-87a4-eec9afe48751')
@@ -54,12 +54,11 @@ Query.create()
                         i.select('Description', 'Requester')
                             .skip(5)
                     });
-                return o;
             })
             .select('RootId', 'RootName').compile()
 ```
 Angular usage Example
-```
+```ts
 const query = Query.create()
             .expand('Requester', o => o.select('Email', 'ID'))
             .expand('Responder', o => o.select('Email', 'ID'))
