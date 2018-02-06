@@ -9,11 +9,11 @@ Can be used as typescript\javascript library. Angular is not required.
 # Installation
 #### npm
 ```
-npm install ngx-odata
+npm install ngx-odata-v4
 ```
 #### yarn
 ```
-yarn add ngx-odata
+yarn add ngx-odata-v4
 ```
 # Integration
 1. Install library
