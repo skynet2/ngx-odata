@@ -55,7 +55,6 @@ export class AppComponent {
                         i.select('Description', 'Requester')
                             .skip(5)
                     });
-                return o;
             })
             .select('RootId', 'RootName').compile()
     }
