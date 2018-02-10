@@ -27,6 +27,7 @@ export class AppComponent {
             .orderBy('Status', OrderBy.Desc);
 
         let x = new HttpHeaders();
+        this.generatedUrl = `http://localhost/PrivateKey?${query.compile()}`;
 
         this.resp = await this.http.get(this.generatedUrl,
             { headers: x }).toPromise()

@@ -4,6 +4,7 @@
   "server": {
     "baseDir": [
       "./example",
+      "./playground",
       "./"
     ]
   }
