@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ngx-odata</title>
+	<title>ngx-odata-v4</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="index.html" class="title">ngx-odata</a>
+					<a href="index.html" class="title">ngx-odata-v4</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -56,7 +56,7 @@
 					<a href="globals.html">Globals</a>
 				</li>
 			</ul>
-			<h1> ngx-odata</h1>
+			<h1> ngx-odata-v4</h1>
 		</div>
 	</div>
 </header>
@@ -64,6 +64,69 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
+				<h1 id="ngx-odata">ngx-odata</h1>
+				<p>Simple typescript library for generating odata queries using fluent api.</p>
+				<p><a href="https://nodei.co/npm/ngx-odata-v4/"><img src="https://nodei.co/npm/ngx-odata-v4.png" alt="NPM"></a></p>
+				<h1 id="prerequisite">Prerequisite</h1>
+				<p>Can be used as typescript\javascript library. Angular is not required.</p>
+				<h1 id="installation">Installation</h1>
+				<h4 id="npm">npm</h4>
+				<pre><code><span class="hljs-symbol">npm</span> install ngx-odata-<span class="hljs-built_in">v4</span>
+</code></pre><h4 id="yarn">yarn</h4>
+				<pre><code><span class="hljs-symbol">yarn</span> <span class="hljs-keyword">add </span>ngx-odata-<span class="hljs-built_in">v4</span>
+</code></pre><h1 id="integration">Integration</h1>
+				<ol>
+					<li>Install library</li>
+					<li>Import Query class <pre><code><span class="hljs-keyword">import</span> { Query } <span class="hljs-keyword">from</span> <span class="hljs-string">"ngx-odata-v4"</span>;
+</code></pre></li>
+				</ol>
+				<h1 id="examples">Examples</h1>
+				<p>Simple query example</p>
+				<pre><code class="lang-ts">Query.create()
+            .expand(<span class="hljs-string">'Requester'</span>, <span class="hljs-function"><span class="hljs-params">o</span> =&gt;</span> o.select(<span class="hljs-string">'Email'</span>, <span class="hljs-string">'ID'</span>))
+            .expand(<span class="hljs-string">'Responder'</span>, <span class="hljs-function"><span class="hljs-params">o</span> =&gt;</span> o.select(<span class="hljs-string">'Email'</span>, <span class="hljs-string">'ID'</span>))
+            .orderBy(<span class="hljs-string">'Created'</span>, OrderBy.Desc)
+            .orderBy(<span class="hljs-string">'Status'</span>, OrderBy.Desc);
+</code></pre>
+				<p>Complex query example</p>
+				<pre><code class="lang-ts">Query.create()
+            .filter(<span class="hljs-string">'Id'</span>, OperatorType.Greater, <span class="hljs-number">1</span>)
+            .filter(<span class="hljs-string">'ReferenceId'</span>, OperatorType.Eq, <span class="hljs-string">'c8027a81-5f7a-4a24-87a4-eec9afe48751'</span>)
+            .filterComplex(<span class="hljs-string">`Status eq 'Pending' or Status eq 'Approved'`</span>)
+            .filter(<span class="hljs-string">'Name'</span>, OperatorType.NotEqual, <span class="hljs-string">'qwerty'</span>).compile();
+</code></pre>
+				<p>Complex expand query example</p>
+				<pre><code class="lang-ts">Query.create()
+            .expand(<span class="hljs-string">'Prop1'</span>)
+            .expand(<span class="hljs-string">'Prop2'</span>, <span class="hljs-function"><span class="hljs-params">o</span> =&gt;</span> {
+                o.select(<span class="hljs-string">'Id'</span>, <span class="hljs-string">'Name'</span>, <span class="hljs-string">'Value'</span>)
+                    .orderBy(<span class="hljs-string">'Id'</span>, OrderBy.Asc)
+                    .top(<span class="hljs-number">5</span>);
+            })
+            .expand(<span class="hljs-string">'Complex'</span>, <span class="hljs-function"><span class="hljs-params">o</span> =&gt;</span> {
+                o.select(<span class="hljs-string">'Id'</span>, <span class="hljs-string">'Name'</span>)
+                    .expand(<span class="hljs-string">'Internal'</span>, <span class="hljs-function"><span class="hljs-params">i</span> =&gt;</span> {
+                        i.select(<span class="hljs-string">'Description'</span>, <span class="hljs-string">'Requester'</span>)
+                            .skip(<span class="hljs-number">5</span>)
+                    });
+            })
+            .select(<span class="hljs-string">'RootId'</span>, <span class="hljs-string">'RootName'</span>).compile()
+</code></pre>
+				<p>Angular usage Example</p>
+				<pre><code class="lang-ts"><span class="hljs-keyword">const</span> query = Query.create()
+            .expand(<span class="hljs-string">'Requester'</span>, <span class="hljs-function"><span class="hljs-params">o</span> =&gt;</span> o.select(<span class="hljs-string">'Email'</span>, <span class="hljs-string">'ID'</span>))
+            .expand(<span class="hljs-string">'Responder'</span>, <span class="hljs-function"><span class="hljs-params">o</span> =&gt;</span> o.select(<span class="hljs-string">'Email'</span>, <span class="hljs-string">'ID'</span>))
+            .orderBy(<span class="hljs-string">'Created'</span>, OrderBy.Desc)
+            .orderBy(<span class="hljs-string">'Status'</span>, OrderBy.Desc);
+
+        <span class="hljs-keyword">let</span> x = <span class="hljs-keyword">new</span> HttpHeaders();
+        <span class="hljs-keyword">this</span>.generatedUrl = <span class="hljs-string">`http://localhost/PrivateKey?<span class="hljs-subst">${query.compile()}</span>`</span>;
+
+        <span class="hljs-keyword">this</span>.resp = <span class="hljs-keyword">await</span> <span class="hljs-keyword">this</span>.http.get(<span class="hljs-keyword">this</span>.generatedUrl,
+            { headers: x }).toPromise()
+</code></pre>
+				<h1 id="github">GitHub</h1>
+				<p>Please feel free to declare issues or contribute: <a href="https://github.com/skynet2/ngx-odata">https://github.com/skynet2/ngx-odata</a></p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
