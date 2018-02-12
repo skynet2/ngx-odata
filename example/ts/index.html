@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/node_modules/systemjs/dist/system.js"></script>
+    <script>
+        System.config({
+            map : {
+              'ngx-odata-v4' : '/node_modules/ngx-odata-v4/bundles/ngx-odata-v4.umd.js'
+            },
+            packages: {
+                'dist': {
+                    'defaultExtension': 'js',
+                    'main': 'index.js'
+                }
+            }
+        });
+
+        System.import('dist');
+    </script>
+</head>
+<body>
+TEst123
+</body>
+</html>

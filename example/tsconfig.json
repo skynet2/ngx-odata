@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true, //for angular to be able to use metadata we specify in our components.
+    "experimentalDecorators": true, //angular needs decorators like @Component, @Injectable, etc.
+    "sourceMap": true,
+    "outDir": "./ts/dist"
+  },
+  "files" : [
+    "./ts/src/index.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "lib": [
+    "es2016",
+    "dom",
+    "es5"
+  ]
+}

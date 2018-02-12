@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--<script src="/node_modules/ngx-odata-v4/bundles/ngx-odata-v4.umd.js"></script>-->
+    <script src="/example/js/ngx-odata-v4.umd.js"></script>
+    <title>Title</title>
+</head>
+<body>
+<script>alert(Query.create().select('Field1', 'Field2', 'Field3').filter("abcd", OperatorType.Eq,"abcd").compile());</script>
+
+</body>
+</html>

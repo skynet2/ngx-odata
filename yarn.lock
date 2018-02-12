@@ -2111,6 +2111,10 @@ ng-packagr@^1.6.0:
     uglify-js "^3.0.7"
     vinyl-fs "^2.4.4"
 
+ngx-odata-v4@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/ngx-odata-v4/-/ngx-odata-v4-0.0.4.tgz#db935adf59e4c31d39c2a035ba4a8c26cfefb16a"
+
 node-gyp@^3.3.1:
   version "3.6.2"
   resolved "https://registry.yarnpkg.com/node-gyp/-/node-gyp-3.6.2.tgz#9bfbe54562286284838e750eac05295853fa1c60"
