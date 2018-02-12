@@ -7,7 +7,8 @@
     "yarn": "yarn",
     "build": "yarn run rimraf dist && yarn run rimraf doc && yarn run build-lib && yarn run build-doc",
     "build-lib": "ng-packagr -p ng-package.json",
-    "build-doc": "typedoc --module system --out ./docs ./src/objects"
+    "build-doc": "typedoc --module system --out ./docs ./src/objects",
+    "github:release" : "yarn run bestzip build.zip ./dist/* && node publish_release_github.js"
   },
   "license": "MIT",
   "repository": {
@@ -39,6 +40,8 @@
     "postcss-discard-comments" : "^2.0.4",
     "typedoc": "^0.9.0",
     "tslib": "^1.9.0",
-    "ngx-odata-v4": "^0.0.4"
+    "ngx-odata-v4": "*",
+    "bestzip" : "^1.1.4",
+    "publish-release" : "^1.4.0"
   }
 }
