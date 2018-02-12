@@ -8,3 +8,5 @@ example/**/*.map
 dist/
 !example/*.js
 publish_release_github\.js
+
+build\.zip
