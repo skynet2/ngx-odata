@@ -1,6 +1,6 @@
 {
   "name": "ngx-odata-v4",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "scripts": {
     "start": "tsc -p example && tsc -p src && concurrently \"tsc -p example -w\" \"tsc -p src -w\" \"lite-server --config sync-bs-config.json\" ",
     "start:example": "tsc -p ./example/angular && concurrently \"tsc -p ./example/angular -w\" \"lite-server --config sync-bs-config-example.json\" ",
@@ -15,6 +15,29 @@
     "type": "git",
     "url": "git+https://github.com/skynet2/ngx-odata"
   },
+  "bugs": {
+    "url": "https://github.com/skynet2/ngx-odata/issues"
+  },
+  "homepage": "https://github.com/skynet2/ngx-odata",
+  "contributors": [
+    {
+      "name": "Stas Dmytryshyn",
+      "url": "https://github.com/skynet2"
+    }
+  ],
+  "keywords": [
+    "odata",
+    "odata v4",
+    "odata client",
+    "typescript",
+    "javascript",
+    "fluent",
+    "fluent api",
+    "angular 5",
+    "angular 2",
+    "angular 4",
+    "angular"
+  ],
   "peerDependencies": {
   },
   "devDependencies": {
