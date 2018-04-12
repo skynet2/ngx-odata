@@ -1,8 +1,8 @@
 {
   "name": "ngx-odata-v4",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
-    "start": "tsc -p example && tsc -p src && concurrently \"tsc -p example -w\" \"tsc -p src -w\" \"lite-server --config sync-bs-config.json\" ",
+    "start": "tsc -p playground && tsc -p src && concurrently \"tsc -p playground -w\" \"tsc -p src -w\" \"lite-server --config sync-bs-config.json\" ",
     "start:example": "tsc -p ./example/angular && concurrently \"tsc -p ./example/angular -w\" \"lite-server --config sync-bs-config-example.json\" ",
     "yarn": "yarn",
     "build": "yarn run rimraf dist && yarn run rimraf doc && yarn run build-lib && yarn run build-doc",

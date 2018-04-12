@@ -88,7 +88,7 @@ export class Query implements IBaseQueryActions {
 
     public filter(field: string, operator: OperatorType, val2: any): Query {
 
-        if ((!field || field.length == 0) || (!val2 || val2.length == 0))
+        if ((field == null || field.length == 0) || (val2 == null || val2.length == 0))
             return this;
 
         if (typeof val2 == "string" && !Query.isGuid(val2) && val2.indexOf("'") === -1) {
