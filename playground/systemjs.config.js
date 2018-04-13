@@ -24,7 +24,8 @@
             '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
             'rxjs': 'npm:rxjs',
             'tslib': 'npm:tslib',
-            'ngx-odata': 'src'
+            'ngx-odata': 'src',
+            'ts-date': 'npm:ts-date'
         },
         // packages tells the System loader how to load when no filename and/or no extension
         packages: {
@@ -40,6 +41,10 @@
             },
             'tslib': {
                 main : 'tslib.js',
+                defaultExtension: 'js'
+            },
+            'ts-date': {
+                main : './index.js',
                 defaultExtension: 'js'
             }
         }

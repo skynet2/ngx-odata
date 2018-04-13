@@ -10,3 +10,8 @@ dist/
 publish_release_github\.js
 
 build\.zip
+
+\.ng_pkg_build/
+
+*.js
+!publish_release_github.draft.js

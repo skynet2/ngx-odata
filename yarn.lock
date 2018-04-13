@@ -3529,6 +3529,10 @@ trim-newlines@^1.0.0:
   dependencies:
     glob "^6.0.4"
 
+ts-date@^2.1.6:
+  version "2.1.6"
+  resolved "https://registry.yarnpkg.com/ts-date/-/ts-date-2.1.6.tgz#7b5460a7a98b349741191f799717d96ea63a6879"
+
 ts-node@^3.0.4:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-3.3.0.tgz#c13c6a3024e30be1180dd53038fc209289d4bf69"

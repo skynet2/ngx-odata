@@ -2,6 +2,7 @@
   "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
   "name": "ngx-odata-v4",
   "lib": {
-    "entryFile": "./src/angular.build.ts"
+    "entryFile": "./src/angular.build.ts",
+    "embedded" : ["ts-date"]
   }
 }

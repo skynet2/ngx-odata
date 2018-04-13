@@ -1,3 +1,5 @@
+import { format as formatFunction, formatDateIso } from 'ts-date';
+
 export interface IBaseQueryActions {
     select(...fields: string[]): Query;
 
@@ -86,12 +88,20 @@ export class Query implements IBaseQueryActions {
         return this;
     }
 
-    public filter(field: string, operator: OperatorType, val2: any): Query {
+    public filter(field: string, operator: OperatorType, val2: Date, format?: string): Query
+    public filter(field: string, operator: OperatorType, val2: string | number | boolean | symbol | null | undefined): Query
+    public filter(field: string, operator: OperatorType, val2: any, format?: string): Query {
 
         if ((field == null || field.length == 0) || (val2 == null || val2.length == 0))
             return this;
 
-        if (typeof val2 == "string" && !Query.isGuid(val2) && val2.indexOf("'") === -1) {
+        if (val2 instanceof Date) {
+            if (format)
+                val2 = formatFunction(val2, format);
+            else
+                val2 = formatDateIso(val2);
+        }
+        else if (typeof val2 == "string" && !Query.isGuid(val2) && val2.indexOf("'") === -1) {
             val2 = `'${val2}'`;
         }
 

@@ -1,14 +1,14 @@
 {
   "name": "ngx-odata-v4",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "scripts": {
     "start": "tsc -p playground && tsc -p src && concurrently \"tsc -p playground -w\" \"tsc -p src -w\" \"lite-server --config sync-bs-config.json\" ",
     "start:example": "tsc -p ./example/angular && concurrently \"tsc -p ./example/angular -w\" \"lite-server --config sync-bs-config-example.json\" ",
     "yarn": "yarn",
     "build": "yarn run rimraf dist && yarn run rimraf doc && yarn run build-lib && yarn run build-doc",
-    "build-lib": "ng-packagr -p ng-package.json",
+    "build-lib": "yarn run ng-packagr -p ng-package.json",
     "build-doc": "typedoc --module system --out ./docs ./src/objects",
-    "github:release" : "yarn run bestzip build.zip ./dist/* && node publish_release_github.js"
+    "github:release": "yarn run bestzip build.zip ./dist/* && node publish_release_github.js"
   },
   "license": "MIT",
   "repository": {
@@ -38,7 +38,11 @@
     "angular 4",
     "angular"
   ],
+  "dependencies": {
+    "ts-date": "^2.1.6"
+  },
   "peerDependencies": {
+    "ts-date": "> 2.0.0"
   },
   "devDependencies": {
     "@angular/common": "^5.2.1",
@@ -60,11 +64,11 @@
     "rollup": "^0.55.0",
     "rollup-plugin-copy": "^0.2.3",
     "ng-packagr": "^1.6.0",
-    "postcss-discard-comments" : "^2.0.4",
+    "postcss-discard-comments": "^2.0.4",
     "typedoc": "^0.9.0",
     "tslib": "^1.9.0",
     "ngx-odata-v4": "*",
-    "bestzip" : "^1.1.4",
-    "publish-release" : "^1.4.0"
+    "bestzip": "^1.1.4",
+    "publish-release": "^1.4.0"
   }
 }

@@ -4,19 +4,22 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 @Component({
     selector: 'my-app',
-    template: `ComplexFilter : {{complexFilterQuery()}}
-    <hr> Expand : {{expandQuery()}}
-    <hr>
-    {{generatedUrl}}<br>
-    <br> {{resp | json}}`,
+    template: `{{tempVar}} || {{tempVar2}} || Custom format {{tempVar3}}`,
 })
 export class AppComponent {
 
     public resp: any;
     public generatedUrl: string;
+    private tempVar: string;
+    private tempVar2: string;
+    private tempVar3: string;
 
     constructor(private http: HttpClient) {
-        this.testEndpoint();
+        //this.testEndpoint();
+        this.tempVar = Query.create().filter('StartDate', OperatorType.Greater, new Date()).compile();
+        this.tempVar3 = Query.create().filter('StartDate', OperatorType.Greater, new Date(), 'YYYY-MM-DD').compile();
+        Query.create().filter('StartDate', OperatorType.Greater, 123).compile();
+        this.tempVar2 = Query.create().filterComplex(`StartDate gt ${new Date().toISOString()}`).compile();
     }
 
     private async testEndpoint() {

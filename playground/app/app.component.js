@@ -50,7 +50,11 @@ var http_1 = require("@angular/common/http");
 var AppComponent = /** @class */ (function () {
     function AppComponent(http) {
         this.http = http;
-        this.testEndpoint();
+        //this.testEndpoint();
+        this.tempVar = query_1.Query.create().filter('StartDate', query_1.OperatorType.Greater, new Date()).compile();
+        this.tempVar3 = query_1.Query.create().filter('StartDate', query_1.OperatorType.Greater, new Date(), 'YYYY-MM-DD').compile();
+        query_1.Query.create().filter('StartDate', query_1.OperatorType.Greater, 123).compile();
+        this.tempVar2 = query_1.Query.create().filterComplex("StartDate gt " + new Date().toISOString()).compile();
     }
     AppComponent.prototype.testEndpoint = function () {
         return __awaiter(this, void 0, void 0, function () {
@@ -64,8 +68,7 @@ var AppComponent = /** @class */ (function () {
                             .orderBy('Created', query_1.OrderBy.Desc)
                             .orderBy('Status', query_1.OrderBy.Desc);
                         x = new http_1.HttpHeaders();
-                        x = x.set('Authorization', 'Bearer BR-j3XxWgvgrTvFqkFVJ-XvL6s20E_4w3qGlvKyDRaKGW95TnCiga3dKQRo1fNFp462yi2x-T90P0pl2yUKYAhYrexsybGx0hZegGE4_ufQlW2cjJDhc3c0brRxs_SHxhU7fcv5m4NqJvB9YLa581iOq9OG8d2EB3uuu8tM0g2lnC6wIe454Z2Okf7vwrGBtuyx438AJa58sUh52n7iETE6b9YhJQNje5BM2VZIQ9f-wTrfoI3aNnRgXMBonu_M9pfRzg98gZaSLO5jHFCGrMb7FzhO4zoc44NFZbHIkBd_hqxqhuAsZ0bsqntfVjhBalbKWRUl8LvJjujTWleFPmxpEQrN8PKlc5EMpO8yc-0oVgPMHcd2bioHwPM3AOBBY-uPXSyIIVoG-YOZ7nIkqXcfBPKJWLU6v9aBuebFbeV3pYrvS041M0JsE5c8w2l_t42mNYuFNP5IcVA80iXv57ndMdrGljVgtVIZOOIpMyWrjUuvP5q86-cEjiRZOjmc6es5GO7nUmFS2kkc-ifsLTw');
-                        this.generatedUrl = "http://dating-api.dev.ak-tech.org/PrivateKeys?" + query.compile();
+                        this.generatedUrl = "http://localhost/PrivateKey?" + query.compile();
                         _a = this;
                         return [4 /*yield*/, this.http.get(this.generatedUrl, { headers: x }).toPromise()];
                     case 1:
@@ -96,14 +99,13 @@ var AppComponent = /** @class */ (function () {
                 i.select('Description', 'Requester')
                     .skip(5);
             });
-            return o;
         })
             .select('RootId', 'RootName').compile();
     };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "ComplexFilter : {{complexFilterQuery()}}\n    <hr> Expand : {{expandQuery()}}\n    <hr>\n    {{generatedUrl}}<br>\n    <br> {{resp | json}}",
+            template: "{{tempVar}} || {{tempVar2}} || Custom format {{tempVar3}}",
         }),
         __metadata("design:paramtypes", [http_1.HttpClient])
     ], AppComponent);
