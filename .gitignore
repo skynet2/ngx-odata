@@ -15,3 +15,4 @@ build\.zip
 
 *.js
 !publish_release_github.draft.js
+*.map
