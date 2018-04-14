@@ -1,6 +1,6 @@
 {
   "name": "ngx-odata-v4",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "scripts": {
     "start": "tsc -p playground && tsc -p src && concurrently \"tsc -p playground -w\" \"tsc -p src -w\" \"lite-server --config sync-bs-config.json\" ",
     "start:example": "tsc -p ./example/angular && concurrently \"tsc -p ./example/angular -w\" \"lite-server --config sync-bs-config-example.json\" ",
@@ -8,6 +8,7 @@
     "build": "yarn run rimraf dist && yarn run rimraf doc && yarn run build-lib && yarn run build-doc",
     "build-lib": "yarn run ng-packagr -p ng-package.json",
     "build-doc": "typedoc --module system --out ./docs ./src/objects",
+    "npm-publish": "yarn run build-lib && cd dist && npm publish",
     "github:release": "yarn run bestzip build.zip ./dist/* && node publish_release_github.js"
   },
   "license": "MIT",

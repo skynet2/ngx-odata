@@ -1,4 +1,4 @@
-import { format as formatFunction, formatDateIso } from 'ts-date';
+import { format as formatFunction, formatLocalIso } from 'ts-date';
 
 export interface IBaseQueryActions {
     select(...fields: string[]): Query;
@@ -99,7 +99,7 @@ export class Query implements IBaseQueryActions {
             if (format)
                 val2 = formatFunction(val2, format);
             else
-                val2 = formatDateIso(val2);
+                val2 = `${formatLocalIso(val2)}Z`;
         }
         else if (typeof val2 == "string" && !Query.isGuid(val2) && val2.indexOf("'") === -1) {
             val2 = `'${val2}'`;
