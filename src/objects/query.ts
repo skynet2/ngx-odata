@@ -113,10 +113,6 @@ export class Query implements IBaseQueryActions {
             else
                 val2 = `${formatLocalIso(val2)}Z`;
         }
-        else if(Array.isArray(val2)){
-            let val = val2.map(x => this.filterInternal(field, operator, x, format));
-            val2 = `(${val.join(" or ")})`;
-        }
         else if (typeof val2 == "string" && !Query.isGuid(val2) && val2.indexOf("'") === -1) {
             val2 = `'${val2}'`;
         }
