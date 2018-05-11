@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 @Component({
     selector: 'my-app',
-    template: `{{tempVar}} || {{tempVar2}} || Custom format {{tempVar3}}`,
+    template: `{{tempVar}} || {{tempVar2}} || Custom format {{tempVar3}} || Array {{tempVar4}}`,
 })
 export class AppComponent {
 
@@ -13,6 +13,7 @@ export class AppComponent {
     private tempVar: string;
     private tempVar2: string;
     private tempVar3: string;
+    private tempVar4: string;
 
     constructor(private http: HttpClient) {
         //this.testEndpoint();
@@ -20,6 +21,7 @@ export class AppComponent {
         this.tempVar3 = Query.create().filter('StartDate', OperatorType.Greater, new Date(), 'YYYY-MM-DD').compile();
         Query.create().filter('StartDate', OperatorType.Greater, 123).compile();
         this.tempVar2 = Query.create().filterComplex(`StartDate gt ${new Date().toISOString()}`).compile();
+        this.tempVar4 = this.arrayFilterQuery();
     }
 
     private async testEndpoint() {
@@ -34,6 +36,14 @@ export class AppComponent {
 
         this.resp = await this.http.get(this.generatedUrl,
             { headers: x }).toPromise()
+    }
+
+    public arrayFilterQuery(): string {
+        return Query.create()
+            .filter('Id', OperatorType.Greater, 1)
+            .filter('ReferenceId', OperatorType.Eq, 'c8027a81-5f7a-4a24-87a4-eec9afe48751')
+            .filter('Status', OperatorType.Eq, ['Pending', 'Approved'])
+            .filter('Name', OperatorType.NotEqual, 'qwerty').compile();
     }
 
     public complexFilterQuery(): string {
