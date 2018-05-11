@@ -90,10 +90,22 @@ export class Query implements IBaseQueryActions {
 
     public filter(field: string, operator: OperatorType, val2: Date, format?: string): Query
     public filter(field: string, operator: OperatorType, val2: string | number | boolean | symbol | null | undefined): Query
+    public filter(field: string, operator: OperatorType, val2: string[] | number[] | boolean[] | symbol[]): Query
     public filter(field: string, operator: OperatorType, val2: any, format?: string): Query {
 
+        if(Array.isArray(val2)){
+            let val = val2.map(x => this.filterInternal(field, operator, x, format));
+            val2 = `(${val.join(" or ")})`;
+        } else {
+            val2 = this.filterInternal(field, operator, val2, format)
+        }
+
+        return this.filterComplex(val2);
+    }
+
+    private filterInternal(field: string, operator: OperatorType, val2: any, format?: string): string {
         if ((field == null || field.length == 0) || (val2 == null || val2.length == 0))
-            return this;
+            return "";
 
         if (val2 instanceof Date) {
             if (format)
@@ -101,11 +113,15 @@ export class Query implements IBaseQueryActions {
             else
                 val2 = `${formatLocalIso(val2)}Z`;
         }
+        else if(Array.isArray(val2)){
+            let val = val2.map(x => this.filterInternal(field, operator, x, format));
+            val2 = `(${val.join(" or ")})`;
+        }
         else if (typeof val2 == "string" && !Query.isGuid(val2) && val2.indexOf("'") === -1) {
             val2 = `'${val2}'`;
         }
 
-        return this.filterComplex(`${field} ${operator.toString()} ${val2}`);
+        return `${field} ${operator.toString()} ${val2}`;
     }
 
     public filterComplex(filter: string): Query {
